@@ -29,3 +29,8 @@ export const setRating = ({date, rating}: SetRatingPayload) => ({
   type: constants.SET_RATING,
   payload: {date, rating},
 });
+
+export const addDate = (date: string) => ({
+  type: constants.ADD_DATE,
+  payload: {date},
+});

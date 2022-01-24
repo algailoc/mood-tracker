@@ -4,14 +4,17 @@ export const constants = {
   ADD_ACTIVITY: 'ADD_ACTIVITY',
   REMOVE_ACTIVITY: 'REMOVE_ACTIVITY',
   SET_RATING: 'SET_RATING',
+  ADD_DATE: 'ADD_DATE',
 };
 
 export interface Day {
   date: string;
   foods: string[];
   activities: string[];
-  rating?: 'awful' | 'bad' | 'neutral' | 'good' | 'excellent';
+  rating?: DayMood;
 }
+
+export type DayMood = 'awful' | 'bad' | 'neutral' | 'good' | 'excellent';
 
 export interface Rating {
   foods: {
@@ -27,7 +30,7 @@ export type AddFoodPayload = {food: string; date: string};
 export type AddActivityPayload = {activity: string; date: string};
 
 export type SetRatingPayload = {
-  rating: 'awful' | 'bad' | 'neutral' | 'good' | 'excellent';
+  rating: DayMood;
   date: string;
 };
 
@@ -65,9 +68,9 @@ export type DatesActionTypes =
 
 export interface DatesState {
   dates: Day[];
-  awful: Rating;
-  bad: Rating;
-  neutral: Rating;
-  good: Rating;
-  excellent: Rating;
+  // awful: Rating;
+  // bad: Rating;
+  // neutral: Rating;
+  // good: Rating;
+  // excellent: Rating;
 }

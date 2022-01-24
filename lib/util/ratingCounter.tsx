@@ -71,17 +71,16 @@ export const ratingCounter = (days: Day[]): RatingState => {
     if (rating != undefined) {
       foods.map(food => {
         state[rating].foods[food] === undefined
-          ? (state[rating].foods[food] = 0)
+          ? (state[rating].foods[food] = 1)
           : (state[rating].foods[food] += 1);
       });
       activities.map(act => {
         state[rating].activities[act] === undefined
-          ? (state[rating].activities[act] = 0)
+          ? (state[rating].activities[act] = 1)
           : (state[rating].activities[act] += 1);
       });
     }
   });
 
-  console.log('STATE', state);
   return state;
 };

@@ -9,26 +9,6 @@ import {
 
 const INITIAL_STATE: DatesState = {
   dates: [],
-  awful: {
-    foods: {},
-    activities: {},
-  },
-  bad: {
-    foods: {},
-    activities: {},
-  },
-  neutral: {
-    foods: {},
-    activities: {},
-  },
-  good: {
-    foods: {},
-    activities: {},
-  },
-  excellent: {
-    foods: {},
-    activities: {},
-  },
 };
 
 export const datesReducer = (
@@ -93,6 +73,17 @@ export const datesReducer = (
           }
           return day;
         })),
+      };
+
+    case constants.ADD_DATE:
+      console.log('??', action.payload);
+
+      return {
+        ...state,
+        dates: [
+          {date: action.payload.date, foods: [], activities: []},
+          ...state.dates,
+        ],
       };
 
     default:
