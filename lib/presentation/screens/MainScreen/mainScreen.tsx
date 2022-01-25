@@ -11,18 +11,24 @@ import {addDate} from '../../../redux/dates/dates.actions';
 
 const MainScreen = () => {
   const dispatch = useDispatch();
-  // const {dates} = useSelector(datesSelectors.dates);
-  const {dates} = {dates: mockDates};
+  const {dates} = useSelector(datesSelectors.dates);
+  // const {dates} = {dates: mockDates};
 
   useEffect(() => {
-    if (!dates.find(el => el.date === moment().format('dd.dd.YYYY'))) {
+    if (
+      dates.find(el => el.date === moment().format('DD.MM.yyyy')) === undefined
+    ) {
       dispatch(addDate(moment().format('DD.MM.yyyy')));
     }
   }, []);
 
   return (
-    <SafeAreaView>
-      <ScrollView style={{paddingHorizontal: 12, marginTop: 10}}>
+    <SafeAreaView style={{backgroundColor: 'white', flex: 1}}>
+      <ScrollView
+        style={{
+          paddingHorizontal: 12,
+          marginTop: 10,
+        }}>
         <GeneralStatistics dates={dates} />
         <View style={{marginVertical: 22}}>
           {dates.map(item => (

@@ -1,6 +1,6 @@
-import {useNavigation} from '@react-navigation/native';
+import {useNavigation} from '@react-navigation/core';
 import React from 'react';
-import {Image, Pressable, Text, View} from 'react-native';
+import {Image, Pressable, Text, useWindowDimensions, View} from 'react-native';
 import {Day} from '../../../../redux/dates/dates.constants';
 import {mapEnMoodToRuMood} from '../../../../util/mapEnMoodToRuMood';
 import {DateCardStyles as styles} from './dateCard.styles';
@@ -9,7 +9,7 @@ export const DateCard = ({day}: {day: Day}) => {
   const navigation = useNavigation();
 
   const goToDayScreen = () => {
-    navigation.navigate('DayScreen', day);
+    navigation.navigate('DayScreen' as never, {day} as never);
   };
 
   return (
@@ -34,13 +34,13 @@ export const DateCard = ({day}: {day: Day}) => {
       </View>
       <View style={styles.row}>
         <View style={{width: '45%'}}>
-          {day.foods.map(item => (
-            <Text key={item}>• {item}</Text>
+          {day.foods.map((item, index) => (
+            <Text key={index.toString()}>• {item}</Text>
           ))}
         </View>
         <View style={{width: '45%'}}>
-          {day.activities.map(item => (
-            <Text key={item}>• {item}</Text>
+          {day.activities.map((item, index) => (
+            <Text key={index.toString()}>• {item}</Text>
           ))}
         </View>
       </View>

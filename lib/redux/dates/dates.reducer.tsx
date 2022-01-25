@@ -17,6 +17,8 @@ export const datesReducer = (
 ) => {
   switch (action.type) {
     case constants.ADD_FOOD:
+      console.log('IN ADD_FOOD', action.payload);
+
       return {
         ...state,
         dates: (state.dates = state.dates.map(day => {
@@ -28,12 +30,14 @@ export const datesReducer = (
       };
 
     case constants.REMOVE_FOOD:
+      console.log('IN REMOVE_FOOD', action.payload);
+
       return {
         ...state,
         dates: (state.dates = state.dates.map(day => {
           if (day.date === action.payload.date) {
-            day.foods.filter(
-              food => food != (action.payload as AddFoodPayload).food,
+            day.foods = day.foods.filter(
+              food => food !== (action.payload as AddFoodPayload).food,
             );
           }
           return day;
@@ -45,7 +49,9 @@ export const datesReducer = (
         ...state,
         dates: (state.dates = state.dates.map(day => {
           if (day.date === action.payload.date) {
-            day.foods.push((action.payload as AddActivityPayload).activity);
+            day.activities.push(
+              (action.payload as AddActivityPayload).activity,
+            );
           }
           return day;
         })),
@@ -56,7 +62,7 @@ export const datesReducer = (
         ...state,
         dates: (state.dates = state.dates.map(day => {
           if (day.date === action.payload.date) {
-            day.foods.filter(
+            day.activities = day.activities.filter(
               food => food != (action.payload as AddActivityPayload).activity,
             );
           }

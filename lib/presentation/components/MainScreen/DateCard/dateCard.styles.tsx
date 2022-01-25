@@ -15,6 +15,7 @@ export const DateCardStyles = StyleSheet.create({
     paddingVertical: 12,
     borderRadius: 8,
     borderColor: '#5EB1BF',
+    borderWidth: 1,
     elevation: 1,
   },
   row: {
